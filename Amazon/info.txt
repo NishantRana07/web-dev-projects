@@ -1,0 +1,8 @@
+This is my first e-commerce website clone made using the html and css only
+
+resources - apni kaksha youtube channel (photos)
+
+html and css are added by me only without the help of any youtube video or something
+
+
+live link - https://rawcdn.githack.com/NishantRana07/web-dev-projects/6b7bedc36895917753c2b8b8d74cfa74a0590c75/Amazon/index.html
