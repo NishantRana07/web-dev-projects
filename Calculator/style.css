@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg clip-path='url(%26quot%3b%23SvgjsClipPath1230%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%2332325d'%3e%3c/rect%3e%3ccircle r='32.485' cx='425.25' cy='9.06' fill='url(%26quot%3b%23SvgjsLinearGradient1231%26quot%3b)'%3e%3c/circle%3e%3ccircle r='34.59' cx='1215.5' cy='28.89' fill='url(%26quot%3b%23SvgjsLinearGradient1232%26quot%3b)'%3e%3c/circle%3e%3ccircle r='34.82' cx='1312.89' cy='284.07' fill='url(%26quot%3b%23SvgjsLinearGradient1233%26quot%3b)'%3e%3c/circle%3e%3ccircle r='36.175' cx='1423.62' cy='312.23' fill='url(%26quot%3b%23SvgjsLinearGradient1234%26quot%3b)'%3e%3c/circle%3e%3ccircle r='24.495' cx='1148.45' cy='525.87' fill='url(%26quot%3b%23SvgjsLinearGradient1235%26quot%3b)'%3e%3c/circle%3e%3ccircle r='23.82' cx='549.48' cy='230.88' fill='url(%26quot%3b%23SvgjsLinearGradient1236%26quot%3b)'%3e%3c/circle%3e%3ccircle r='28.5' cx='1147.58' cy='186.19' fill='url(%26quot%3b%23SvgjsLinearGradient1237%26quot%3b)'%3e%3c/circle%3e%3ccircle r='27.275' cx='94.06' cy='26.01' fill='url(%26quot%3b%23SvgjsLinearGradient1238%26quot%3b)'%3e%3c/circle%3e%3c/g%3e%3cdefs%3e%3cclipPath id='SvgjsClipPath1230'%3e%3crect width='1440' height='560' x='0' y='0'%3e%3c/rect%3e%3c/clipPath%3e%3clinearGradient x1='360.28' y1='9.060000000000002' x2='490.21999999999997' y2='9.060000000000002' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1231'%3e%3cstop stop-color='%2332325d' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%23424488' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1146.32' y1='28.89' x2='1284.6799999999998' y2='28.89' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1232'%3e%3cstop stop-color='%23ab3c51' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%234f4484' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1243.25' y1='284.07' x2='1382.53' y2='284.07' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1233'%3e%3cstop stop-color='%2384b6e0' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%23464a8f' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1351.27' y1='312.23' x2='1495.97' y2='312.23' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1234'%3e%3cstop stop-color='%23ab3c51' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%234f4484' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1099.46' y1='525.87' x2='1197.44' y2='525.87' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1235'%3e%3cstop stop-color='%2384b6e0' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%23464a8f' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='501.84000000000003' y1='230.88' x2='597.12' y2='230.88' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1236'%3e%3cstop stop-color='%23ab3c51' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%234f4484' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='1090.58' y1='186.19' x2='1204.58' y2='186.19' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1237'%3e%3cstop stop-color='%23ab3c51' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%234f4484' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='39.510000000000005' y1='26.01' x2='148.61' y2='26.01' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1238'%3e%3cstop stop-color='%23f29b7c' offset='0.1'%3e%3c/stop%3e%3cstop stop-color='%237e6286' offset='0.9'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+    margin: 0;
+}
+
+.cal {
+    background-color: #341c18; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+}
+
+.op {
+    background-color: #ae445a;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: right;
+    font-size: 2em;
+    margin-bottom: 20px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color:#ae445a;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 20px;
+    flex: 1;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #662549;
+}
+
+button:active {
+    background-color: #662549;
+}
