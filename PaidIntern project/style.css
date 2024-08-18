@@ -142,6 +142,83 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
     
   }
 
+
+  /*Alerts*/
+
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+
+
+.fa-check{
+  color:#C2F3D5;
+  background-color: #1CB05C;
+  font-size: 20px;
+  border-radius: 30px;
+  padding:5px;
+}
+.alert{
+  background:#C2F3D5 ;
+  padding: 20px 40px;
+  width:300px;
+  position:fixed;
+  right: 0;
+  top: 10px;
+  border-radius: 4px;
+  border-left: 8px solid #96EBBA;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.alert.showAlert{
+  opacity: 1;
+  pointer-events: auto;
+  overflow: hidden;
+}
+.alert.show{
+  animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+  0%{
+    transform: translateX(100%);
+  }
+  40%{
+    transform: translateX(-10%);
+  }
+  80%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-10px);
+  }
+}
+
+.hide
+{
+  display: none;
+}
+.alert .msg{
+  padding: 0 20px;
+  font-size: 18px;
+  color: #1CB05C;
+}
+.alert .close-btn{
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #96EABB;
+  padding: 20px 18px;
+  cursor: pointer;
+}
+.alert .close-btn:hover{
+  background: #36cb76;
+}
+.alert .close-btn .fas{
+  color: #1BAB5A;
+  font-size: 22px;
+  line-height: 40px;
+}
+
   /*Slider*/
 /* Slider container aligned to the right */
 .slider {
@@ -164,6 +241,10 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
   {
     right:0;
     display: flex;
+  }
+  .slider.hide
+  {
+    display: none;
   }
   .master::-webkit-scrollbar
   {
@@ -301,13 +382,17 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
     padding:20px;
     gap:50px;
 }
+
+
 .body img
 {
-    height:60vh;
+    height:100%;
+    width:50%;
+    object-fit: contain;
 }
 .top
 {
-    color:blue;
+    color:#62acdd;
     font-family:arial;
     text-decoration:solid;
     font-size:160%;
@@ -316,7 +401,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
 
 .below
 {
-    color:rgb(163, 153, 153);
+    color:#c8d2d5;
     font-family:arial;
     text-decoration:solid;
     position:relative;
@@ -324,7 +409,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
 }
 .bottom
 {
-    color:rgb(255, 249, 249);
+    color:#73b9e8;
     font-family:arial;
     text-decoration:solid;
     position:relative;
@@ -375,7 +460,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
     padding-top: 10%;
    }
    
-   svg {
+   svg { 
     width: 20px;
     height: 20px;
    }
@@ -421,4 +506,76 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
     border: 1px solid #ffcaa6;
     background-color: #ffcaa6;
    }
+ 
    
+/* mentors */
+.mentors
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 40px 0px;
+  gap:20px;
+}
+.person {
+  width: 190px;
+  height: 254px;
+  background: #3405a3;
+  border-radius: 15px;
+  box-shadow: 1px 5px 60px 0px #100a886b;
+ }
+ 
+ .person .person-border-top {
+  width: 60%;
+  height: 3%;
+  background: #6b64f3;
+  margin: auto;
+  border-radius: 0px 0px 15px 15px;
+ }
+ 
+ .person span {
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
+ }
+ 
+ .person .job {
+  font-weight: 400;
+  color: white;
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 12px;
+ }
+ 
+ .person .img {
+  width: 70px;
+  height: 80px;
+  background: #6b64f3;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 25px;
+ }
+ .person .img:hover
+ {
+  box-shadow: -3px 3px rgb(149, 149, 197);
+  transition: all 0.3s ease-in;
+ }
+ .person button {
+  padding: 8px 25px;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+  border: none;
+  margin-top: 30px;
+  background: #6b64f3;
+  color: white;
+  font-weight: 600;
+ }
+ 
+ .person button:hover {
+  background: #534bf3;
+ }
