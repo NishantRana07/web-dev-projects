@@ -44,25 +44,22 @@ addproducts();
 
 /* Cart handling */
 var count=0;
-var btn=document.querySelectorAll('.btn');
+var buttn=document.querySelectorAll('.btn');
 
 function cart() {
-    btn.forEach((obj)=>{
+    buttn.forEach((obj)=>{
         obj.addEventListener('click', function (x) {
             count++;
             document.querySelector('.btn-cart').setAttribute('data-quantity', count);
             let index=obj.getAttribute('value');
             cartarr.push(courses[index]);
-
+            productadded();
             //add the price to price var
             price+=parseFloat(courses[index].price);
-            
             //add the content to slider
-            addcontent();
-            
+            addcontent();  
         });
-        
-    })
+        })
 }
 
 // Call the cart function to set up the event listener
@@ -73,6 +70,7 @@ const slider = document.querySelector('.slider');
 const cartbutton=document.querySelector('.btn-cart');
 cartbutton.addEventListener('click',function(){
   console.log('clicked cart button');
+  
   slider.classList.toggle('activated');
 })
 
@@ -80,7 +78,6 @@ cartbutton.addEventListener('click',function(){
 function addcontent()
 {
 let prod='';
-let emptystr='<P> Add Some Courses</p>';
 cartarr.forEach((obj,index)=>{
   prod+=`<div class="cart-cards">
 
@@ -101,6 +98,7 @@ document.querySelector('.checkout .amount').innerHTML=`<p>₹${price}</p>`;
 });
 document.querySelector('.master').innerHTML=prod;
 console.log('products added');
+
 
 //to provide delete funtionality to all delete buttons
 document.querySelectorAll('.prod-del i').
@@ -125,3 +123,54 @@ function deleteProduct(index) {
   document.querySelector('.btn-cart').setAttribute('data-quantity', count);
   addcontent(); 
 }
+
+
+//alert
+function productadded()
+{
+  let alert=document.querySelector('.alert');
+  console.log('clicked');
+    alert.classList.add("show");
+    alert.classList.remove('hide');
+    alert.classList.add("showAlert");
+    setTimeout(function(){
+      alert.classList.remove("showALert");
+      alert.classList.remove("show");
+      alert.classList.add("hide");
+    },2000);
+  document.querySelector('.close-btn').click(function(){
+    alert.classList.remove("show");
+    alert.classList.add("hide");
+  });
+
+}
+
+
+/* Mentors */
+let personInfo=[
+  {url:'images/1st-person.jpg',title:'Front-End Dev',name:'Nishant Rana'},
+  {url:'images/2nd-person.avif',title:'Back-End Dev',name:'Sanjeevani'},
+  {url:'images/3rd-person.jpeg',title:'Cloud Engineer',name:'Akash'},
+  {url:'images/4th-person.avif',title:'Data Scientist',name:'Sunita Sharma'},
+  {url:'images/5th-person.png',title:'HR Manager',name:'Ankita'},
+];
+
+function addMentors()
+{
+  let info='';
+  personInfo.forEach(obj=>
+    info+= `<div class="person">
+      <div class="person-border-top">
+      </div>
+      <div class="img">
+        <img src='${obj.url}' style="height:100%;border-radius:16px">
+      </div>
+      <span>${obj.name}</span>
+      <p class="job">${obj.title}</p>
+      <button> Contact
+      </button>
+    </div>`
+  )
+  document.querySelector('.mentors').innerHTML=info;
+}
+addMentors();
