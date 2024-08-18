@@ -1,0 +1,51 @@
+@media screen and (max-width: 768px) {
+    .navbar .right {
+        display: none;
+    }
+    .navbar button 
+    {
+        display: block;
+    }
+    .navbar
+    {
+        padding:10px 30px;
+    }
+    .navbar .right.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 74px; 
+        right: 0px; 
+        padding:10px;
+        gap:10px;
+        align-items: end;
+        background-color: #3333336f;
+    }
+    .right .search
+    {
+        margin:0px;
+    }
+    
+    .top
+    {
+        font-size:100%;
+    }
+    .below
+    {
+        font-size:200%;
+    }
+    .bottom
+    {
+        font-size:100%;
+    }
+    .body img 
+    {
+        display: none;
+    }
+    .products
+    {
+        display: flex;
+        justify-content: center;
+        gap:30px;
+    }
+}
