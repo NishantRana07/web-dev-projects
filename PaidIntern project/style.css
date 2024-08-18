@@ -168,6 +168,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+    z-index:99;
 }
 .alert.showAlert{
   opacity: 1;
