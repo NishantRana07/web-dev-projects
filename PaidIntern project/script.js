@@ -3,10 +3,58 @@ const nav=document.querySelector('.right');
 let cartarr=[];
 var add='';
 let price=0;
+
+/* To toggle the cart button */
 button.addEventListener('click',function()
 {
     nav.classList.toggle('show');
 })
+
+
+/* for text change */
+const words = ["Education", "Learning", "Knowledge", "Growth"];
+let currentWordIndex = 0;
+let currentCharIndex = 0;
+const wordElement = document.getElementById("changingWord");
+let isDeleting = false;
+let typingSpeed = 100; // Adjust typing speed (milliseconds)
+
+function typeWord() {
+    const currentWord = words[currentWordIndex];
+
+    // If deleting, decrease the length of text; else, increase it
+    if (isDeleting) {
+        currentCharIndex--;
+        wordElement.textContent = currentWord.substring(0, currentCharIndex);
+    } else {
+        currentCharIndex++;
+        wordElement.textContent = currentWord.substring(0, currentCharIndex);
+    }
+
+    // If the word is completely typed out
+    if (!isDeleting && currentCharIndex === currentWord.length) {
+        // Pause before starting to delete
+        setTimeout(() => {
+            isDeleting = true;
+        }, 1000); // Pause before deleting
+    }
+
+    // If the word is completely deleted
+    if (isDeleting && currentCharIndex === 0) {
+        isDeleting = false;
+        currentWordIndex = (currentWordIndex + 1) % words.length; // Move to next word
+    }
+
+    // Adjust speed for typing vs deleting
+    const speed = isDeleting ? typingSpeed / 2 : typingSpeed;
+
+    // Recursively call `typeWord` with a small delay
+    setTimeout(typeWord, speed);
+}
+
+// Start typing the words
+typeWord();
+
 
 /*for courses*/
 var courses=[
@@ -67,12 +115,22 @@ cart();
 
 //activating slider
 const slider = document.querySelector('.slider');
-const cartbutton=document.querySelector('.btn-cart');
-cartbutton.addEventListener('click',function(){
+const cartButton = document.querySelector('.btn-cart');
+
+// Toggle slider when clicking the cart button
+cartButton.addEventListener('click', function(event) {
   console.log('clicked cart button');
-  
   slider.classList.toggle('activated');
-})
+});
+
+// Close slider when clicking outside of it
+document.addEventListener('click', function(event) {
+  // If the click is outside the slider and not on the cart button
+  if (!slider.contains(event.target) && !cartButton.contains(event.target)) {
+    slider.classList.remove('activated'); // Hide the slider
+  }
+});
+
 
 // Select the slider container
 function addcontent()
@@ -174,3 +232,100 @@ function addMentors()
   document.querySelector('.mentors').innerHTML=info;
 }
 addMentors();
+
+/* What makes us deffernt section  */
+
+const features = [
+  {
+    title: "Personalized Learning",
+    subtitle: "Customized learning paths tailored to individual goals."
+  },
+  {
+    title: "Expert Instructors",
+    subtitle: "Industry professionals with real-world experience."
+  },
+  {
+    title: "Interactive Courses",
+    subtitle: "Hands-on projects and live sessions for practical learning."
+  },
+  {
+    title: "Flexible Scheduling",
+    subtitle: "Learn at your own pace with 24/7 course access."
+  },
+  {
+    title: "Career Support",
+    subtitle: "Guidance and resources for career advancement."
+  },
+  {
+    title: "Cutting-Edge Content",
+    subtitle: "Courses updated with the latest industry trends."
+  },
+  {
+    title: "Global Community",
+    subtitle: "Collaborate with peers and experts worldwide."
+  }
+];
+
+function addfeatures()
+{
+  let content=''
+  features.forEach(obj=>
+  {
+    content+=`<div class="cardn">
+          <div class="title">
+            <h3>${obj.title}</h3>
+          </div>
+          <div class="sub">
+            <h4>${obj.subtitle}</h4>
+          </div>
+        </div>`;
+  }
+  )
+
+  document.querySelector('.cardnwrapper').innerHTML=content;
+}
+addfeatures();
+
+/* Javascript for moving these cards */
+
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+  const cardnWrapper = document.querySelector('.cardnwrapper');
+  const cardns = Array.from(cardnWrapper.children);
+
+  // Duplicate cardns for infinite scrolling
+  function duplicatecardns() {
+    cardns.forEach(cardn => {
+      cardnWrapper.appendChild(cardn.cloneNode(true));
+    });
+  }
+
+  duplicatecardns();
+
+  let scrollAmount = 0;
+  const scrollSpeed = 1; // Adjust scroll speed as needed
+  const wrapperWidth = cardnWrapper.offsetWidth;
+  const cardnWidth = cardns[0].offsetWidth;
+  const totalWidth = cardnWidth * cardns.length;
+
+  // Function to continuously scroll the cardn wrapper
+  function autoScroll() {
+    scrollAmount += scrollSpeed;
+    if (scrollAmount >= totalWidth) {
+      scrollAmount = 0;
+      cardnWrapper.scrollLeft = 0;
+    } else {
+      cardnWrapper.scrollLeft = scrollAmount;
+    }
+    requestAnimationFrame(autoScroll);
+  }
+
+  autoScroll();
+
+
+  // Call updateActivecardn function on scroll
+  cardnWrapper.addEventListener('scroll', updateActivecardn);
+
+  // Initialize active cardn
+  updateActivecardn();
+});
