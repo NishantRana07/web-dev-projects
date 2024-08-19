@@ -9,7 +9,18 @@ button.addEventListener('click',function()
 {
     nav.classList.toggle('show');
 })
+const slider = document.querySelector('.slider');
+const cartButton = document.querySelector('.btn-cart');
 
+// Toggle slider when clicking the cart button
+cartButton.addEventListener('click', function(event) {
+  console.log('clicked cart button');
+  slider.classList.toggle('activated');
+});
+document.querySelector('.body').addEventListener('click',function(event)
+{
+  slider.classList.remove('activated');
+})
 
 /* for text change */
 const words = ["Education", "Learning", "Knowledge", "Growth"];
@@ -113,23 +124,6 @@ function cart() {
 // Call the cart function to set up the event listener
 cart();
 
-//activating slider
-const slider = document.querySelector('.slider');
-const cartButton = document.querySelector('.btn-cart');
-
-// Toggle slider when clicking the cart button
-cartButton.addEventListener('click', function(event) {
-  console.log('clicked cart button');
-  slider.classList.toggle('activated');
-});
-
-// Close slider when clicking outside of it
-document.addEventListener('click', function(event) {
-  // If the click is outside the slider and not on the cart button
-  if (!slider.contains(event.target) && !cartButton.contains(event.target)) {
-    slider.classList.remove('activated'); // Hide the slider
-  }
-});
 
 
 // Select the slider container
@@ -210,7 +204,7 @@ let personInfo=[
   {url:'images/2nd-person.avif',title:'Back-End Dev',name:'Sanjeevani'},
   {url:'images/3rd-person.jpeg',title:'Cloud Engineer',name:'Akash'},
   {url:'images/4th-person.avif',title:'Data Scientist',name:'Sunita Sharma'},
-  {url:'images/5th-person.png',title:'HR Manager',name:'Ankita'},
+  {url:'images/5th-person.png',title:'HR Manager',name:'Ankita'}
 ];
 
 function addMentors()
@@ -329,3 +323,54 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize active cardn
   updateActivecardn();
 });
+
+
+var reviewContent=[
+  {url:'images/1st-person.jpg',title:'The course content is spot on, and the mentors are always ready to support you.',name:'Nishant Rana'},
+  {url:'images/2nd-person.avif',title:'The practical projects were a game-changer. I built a portfolio that impressed interviewers!',name:'Sanjeevani'},
+  {url:'images/3rd-person.jpeg',title:'Loved the flexible schedule! I could manage my job and still learn at my own pace.',name:'Akash'},
+  {url:'images/4th-person.avif',title:'Thanks to the skills I got here, I got a web developer job right after the course!',name:'Sunita Sharma'},
+  {url:'images/5th-person.png',title:'The personalized approach really helped me focus on what I needed. Teachers were super helpful!',name:'Ankita'}
+]
+
+function addreviews()
+{
+  let content=''
+  reviewContent.forEach(obj =>
+  {
+    content+=`<div class="cardx review-cardx">
+        <div class="header">
+          <div class="image">
+          <img src='${obj.url}'>
+          </div>
+          <div>
+            <div class="stars">
+              <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+              <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+              </svg>
+            </div>
+            <p class="name">${obj.name}</p>
+          </div>
+        </div>
+
+        <p class="message">
+          ${obj.title}
+        </p>
+</div>`;
+  }
+  );
+  document.querySelector('.reviews-cardxs').innerHTML=content;
+}
+addreviews();
