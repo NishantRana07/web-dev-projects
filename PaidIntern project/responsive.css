@@ -48,4 +48,18 @@
         justify-content: center;
         gap:30px;
     }
+    .btn-cart
+    {
+        margin:15px;
+    }
+    .slider
+    {
+        z-index:2;
+        height:60%;
+        top:350px;
+    }
+    .card 
+    {
+        z-index:1;
+    }
 }
