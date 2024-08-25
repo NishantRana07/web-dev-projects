@@ -83,7 +83,7 @@ function addproducts()
     <img src="${obj.url}" style="width:100%;object-fit:fill">
   </div>
   <div class="card-info">
-    <p class="text-title">${obj.title} </p>
+    <p class="text-title">${obj.title}</p>
     <p class="text-body">${obj.description}</p>
   </div>
   <div class="card-footer">

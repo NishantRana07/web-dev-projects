@@ -11,136 +11,143 @@ body
 background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5,29,65,1) 100%);
 }
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #3333331b;
-    padding:10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3333331b;
+  padding: 10px 30px;
+  position: relative; /* Ensures proper context for fixed elements */
 }
-.navbar button
-{
-    display: none;
-    font-size: 0.7rem;
-    color:rgb(255, 255, 255);
-    border:none;
-    background-color: transparent;
+
+.navbar .ham {
+  display: none;
+  color: rgb(255, 255, 255);
+  border: none;
+  
 }
-.right button
-{
-    display: block;
+
+.right button {
+  display: block;
+  border:none;
+  color:White;
+  font-size: 0.7rem;
+  background-color: transparent;
 }
+
 .navbar img {
-    height: 50px;
+  height: 50px;
 }
 
 .right a {
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-left:10px;
-    margin-top:5px;
-}
-.navbar .button i
-{
-    color:rgb(16, 4, 4);
-    font-size: 15px;
-}
-.right
-{
-    display: flex;
-}
-.search 
-{
-    display:flex;
-    font-size: large;
-    margin:0px 60px 0px 60px;
-    background-color: rgb(255, 255, 255);
-    border-radius:20px;
-    height: 30px;
-    width:160px;
-    padding:0px 0px 0px 10px;
-}
-.search input
-{
-    background-color: transparent;
-    border: none;
-    width:70%;
-
-}
-.search button
-{
-    background-color: orange;
-    border-radius:20px;
-    width:30%;
-}
-.search input:focus
-{
-    border:none;
-    box-shadow: none;
-    outline:none
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
-/*Cart*/
+.navbar .button i {
+  color: rgb(16, 4, 4);
+  font-size: 15px;
+}
 
+.right {
+  display: flex;
+}
+
+.search {
+  display: flex;
+  font-size: large;
+  margin: 0px 60px 0px 60px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  height: 30px;
+  width: 160px;
+  padding: 0px 0px 0px 10px;
+}
+
+.search input {
+  background-color: transparent;
+  border: none;
+  width: 70%;
+}
+
+.search button {
+  background-color: orange;
+  border-radius: 20px;
+  width: 30%;
+}
+
+.search input:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Cart */
 .btn-cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    border: none;
-    background-color: transparent;
-    position: relative;
-  }
-  
-  .btn-cart::after {
-    content: attr(data-quantity);
-    width: fit-content;
-    height: fit-content;
-    position: absolute;
-    font-size: 15px;
-    color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    opacity: 0;
-    visibility: hidden;
-    transition: .2s linear;
-    top: 115%;
-  }
-  
-  .icon-cart {
-    width: 20px;
-    height: 25px;
-    transition: .2s linear;
-    height: 25px;
-    font-weight: bolder;
-  }
-  
-  .icon-cart path {
-    fill: rgb(245, 242, 242);
-    transition: .2s linear;
-  }
-  
-  .btn-cart:hover > .icon-cart {
-    transform: scale(1.2);
-  }
-  
-  .btn-cart:hover > .icon-cart path {
-    fill: rgb(34, 170, 233);
-  }
-  
-  .btn-cart:hover::after {
-    visibility: visible;
-    opacity: 1;
-    top:0%;
-    
-  }
-  
-  .quantity {
-    display: none;
-    
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right:40px; /* Fixed position to keep it outside the toggled navbar */
+   /* Adjust according to your design */
+  z-index: 1000; /* Ensure it's above other elements */
+  visibility: visible; 
+  opacity: 1; /* Ensure opacity on desktop */
+}
+
+.btn-cart::after {
+  content: attr(data-quantity);
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s linear;
+  top: 115%;
+}
+
+.icon-cart {
+  width: 20px;
+  height: 25px;
+  transition: .2s linear;
+  font-weight: bolder;
+}
+
+.icon-cart path {
+  fill: rgb(245, 242, 242);
+  transition: .2s linear;
+}
+
+.btn-cart:hover > .icon-cart {
+  transform: scale(1.2);
+}
+
+.btn-cart:hover > .icon-cart path {
+  fill: rgb(34, 170, 233);
+}
+
+.btn-cart:hover::after {
+  visibility: visible;
+  opacity: 1;
+  top: 0%;
+}
+
+.quantity {
+  display: none;
+}
+
+/* Responsive */
 
 
   /*Alerts*/
@@ -817,12 +824,12 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
 /* Review cardxs */
 .reviews-cardxs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   height:fit-content;
   overflow-x: scroll;
   scrollbar-width: none;
   gap: 1rem;
-  padding:2rem;
+  padding:1rem;
 }
 .review-cardxs::-webkit-scrollbar
 {
@@ -853,7 +860,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
   color: #555;
 }
 
-/* From Uiverse.io by Yaya12085 */ 
+
 .cardx {
   background-color: rgba(243, 244, 246, 1);
   padding: 2rem;
@@ -940,6 +947,7 @@ footer h2
   font-weight: 700;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /* LInks */
 
 .rel-links
@@ -990,11 +998,7 @@ footer h2
   margin-right: 10px;
 }
 /* Newsleteer */
-.subscribe
-{
-  position: relative;
-  margin:0px auto;
-}
+
 .popup {
   position: relative;
   width: 320px;
@@ -1002,10 +1006,6 @@ footer h2
   background: #ffffff42;
   box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
   border-radius: 13px;
-  margin:0px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .form {

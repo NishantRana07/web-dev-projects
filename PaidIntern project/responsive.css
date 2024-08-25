@@ -1,31 +1,35 @@
 @media screen and (max-width: 768px) {
+    /* Responsive */
     .navbar .right {
         display: none;
-    }
-    .navbar button 
-    {
+      }
+      
+      .navbar .ham {
         display: block;
-    }
-    .navbar
-    {
-        padding:10px 30px;
-    }
-    .navbar .right.show {
+        margin-right:80px;
+        font-size: 1rem;
+      }
+      
+      .navbar {
+        padding: 10px 30px;
+      }
+      
+      .navbar .right.show {
         display: flex;
         flex-direction: column;
         position: absolute;
         top: 74px; 
         right: 0px; 
-        padding:10px;
-        gap:10px;
+        padding: 10px;
+        gap: 10px;
         align-items: end;
         background-color: #3333336f;
-    }
-    .right .search
-    {
-        margin:0px;
-    }
-    
+      }
+      
+      .right .search {
+        margin: 0px;
+      }
+          
     .top
     {
         font-size:100%;
@@ -50,16 +54,29 @@
     }
     .btn-cart
     {
-        margin:15px;
+        position: absolute;
+        top:20px;
+        right:60px;
+        z-index: 99;
     }
+    
     .slider
     {
         z-index:2;
         height:60%;
-        top:350px;
+        top:70px;
     }
     .card 
     {
         z-index:1;
+    }
+    .popup
+    {
+        width:auto;
+        margin:0px 0px;
+    }
+    .reviews-cardxs
+    {
+        padding:0.5rem;
     }
 }
