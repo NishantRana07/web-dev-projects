@@ -7,15 +7,18 @@ font-family: sans-serif;
 body
 {
     background: rgb(5,5,5);
-background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5,29,65,1) 100%);
+background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, #051d41 100%);
 }
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3333331b;
+  background-color:#021838fa;
   padding: 10px 30px;
-  position: relative; /* Ensures proper context for fixed elements */
+  position: fixed;
+  top:0;
+  z-index:100;
+  width:100% /* Ensures proper context for fixed elements */
 }
 
 .navbar .ham {
@@ -63,7 +66,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
   margin: 0px 60px 0px 60px;
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
-  height: 30px;
+  height: 28px;
   width: 160px;
   padding: 0px 0px 0px 10px;
 }
@@ -97,7 +100,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
   position: absolute;
   right:40px; /* Fixed position to keep it outside the toggled navbar */
    /* Adjust according to your design */
-  z-index: 1000; /* Ensure it's above other elements */
+   /* Ensure it's above other elements */
   visibility: visible; 
   opacity: 1; /* Ensure opacity on desktop */
 }
@@ -174,7 +177,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  z-index:99;
+  z-index:101;
 }
 .alert.showAlert{
   opacity: 1;
@@ -268,7 +271,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
     scroll-snap-align: start; 
     padding-bottom: 10px;
     overflow-y: auto;
-    z-index: 99;  
+    z-index: 98;  
   }
   .checkout
 {
@@ -377,7 +380,7 @@ background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, rgba(5
     position:relative;
     display: flex;
     width:99%;
-    margin:5px auto;
+    margin:55px auto 0px auto;
     height:80%;
     align-items: center;
     z-index:-1;

@@ -52,6 +52,10 @@
         justify-content: center;
         gap:30px;
     }
+    .body
+    {
+        margin-top:80px;
+    }
     .btn-cart
     {
         position: absolute;
