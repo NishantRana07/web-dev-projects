@@ -558,7 +558,7 @@ function addcheckout() {
     </div>
   
   </div>`;
-
+price=parseFloat(price)+parseFloat(((price/100)*10).toFixed(2));
 }
 function remover()
 {
