@@ -125,7 +125,7 @@ function cart() {
 cart();
 
 
-
+var checkoutProd;
 // Select the slider container
 function addcontent()
 {
@@ -148,6 +148,9 @@ cartarr.forEach((obj,index)=>{
 `;
 document.querySelector('.checkout .amount').innerHTML=`<p>₹${price}</p>`;
 });
+
+checkoutProd=prod;
+
 document.querySelector('.master').innerHTML=prod;
 console.log('products added');
 
@@ -497,4 +500,98 @@ function addContactUs() {
         </div>
       </div>
     </section>`;
+}
+
+/* Checkout Functionality */
+
+const checkoutButton=document.querySelector('.checkout .button');
+checkoutButton.addEventListener('click',function()
+{
+  remover();
+  addcheckout();
+  addpayment();
+})
+
+
+    
+
+
+
+function addcheckout() {
+  let mastercontent=document.querySelector('.master');
+  mastercontent.innerHTML=`
+<div class="containx">
+    <div class="cardf cart">
+      <label class="title">CHECKOUT</label>
+      <div class="steps">
+        <div class="step">
+          <div class='idk'>
+            <span>Details</span>
+            <p>Nishant Rana</p>
+            <p>Nishnatelite007@gmail.com</p>
+          </div>
+          
+          <hr>
+          <div class="promo">
+            <span>HAVE A PROMO CODE?</span>
+            <form class="form">
+              <input type="text" placeholder="Enter a Promo Code" class="input_field">
+              <button>Apply</button>
+            </form>
+          </div>
+          <hr>
+          <div class="payments">
+            <span>PAYMENT</span>
+            <div class="details">
+              <span>Subtotal:</span>
+              <span>₹${price}</span>
+              <span>Other charges:</span>
+              <span>₹0.00</span>
+              <span>Tax:</span>
+              <span>₹${((price/100)*10).toFixed(2)}</span>
+              <span>Total:</span>
+              <span>₹${parseFloat(price)+parseFloat(((price/100)*10).toFixed(2))}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>`;
+
+}
+function remover()
+{
+  let master=document.querySelector('.master');
+  master.innerHTML='';
+}
+
+function addpayment()
+{
+  const check=document.querySelector('.slider .checkout');
+  check.innerHTML=`<div class="containerfg">
+ <div class="left-side">
+  <div class="cardsd">
+   <div class="cardsd-line"></div>
+   <div class="buttons"></div>
+  </div>
+  <div class="post">
+   <div class="post-line"></div>
+   <div class="screen">
+    <div class="dollar">$</div>
+   </div>
+   <div class="numbers"></div>
+   <div class="numbers-line2"></div>
+  </div>
+ </div>
+ <div class="right-side">
+  <div class="new">Pay Now ₹${price}</div>
+  
+   <svg viewBox="0 0 451.846 451.847" height="512" width="512" xmlns="http://www.w3.org/2000/svg" class="arrow"><path fill="#cfcfcf" data-old_color="#000000" class="active-path" data-original="#000000" d="M345.441 248.292L151.154 442.573c-12.359 12.365-32.397 12.365-44.75 0-12.354-12.354-12.354-32.391 0-44.744L278.318 225.92 106.409 54.017c-12.354-12.359-12.354-32.394 0-44.748 12.354-12.359 32.391-12.359 44.75 0l194.287 194.284c6.177 6.18 9.262 14.271 9.262 22.366 0 8.099-3.091 16.196-9.267 22.373z"></path></svg>
+ 
+ </div>
+</div>`;
+check.style.background='transparent';
+document.querySelector('.slider .master').style.backgroundColor='transparent';
+console.log(document.querySelector('.slider .master').childNodes)
 }
