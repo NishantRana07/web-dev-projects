@@ -1362,7 +1362,7 @@ hr {
   flex-direction: column;
 }
 
-.title {
+.titlex {
   width: 100%;
   height: 40px;
   position: relative;
@@ -1586,9 +1586,6 @@ hr {
   z-index: 10;
   flex-direction: column;
   align-items: center;
-  -webkit-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
-  -moz-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
-  -webkit-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
 }
 
 .cardsd-line {

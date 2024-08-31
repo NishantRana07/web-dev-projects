@@ -522,7 +522,7 @@ function addcheckout() {
   mastercontent.innerHTML=`
 <div class="containx">
     <div class="cardf cart">
-      <label class="title">CHECKOUT</label>
+      <label class="titlex">CHECKOUT</label>
       <div class="steps">
         <div class="step">
           <div class='idk'>
@@ -550,6 +550,7 @@ function addcheckout() {
               <span>Tax:</span>
               <span>₹${((price/100)*10).toFixed(2)}</span>
               <span>Total:</span>
+              
               <span>₹${parseFloat(price)+parseFloat(((price/100)*10).toFixed(2))}</span>
             </div>
           </div>
@@ -558,7 +559,7 @@ function addcheckout() {
     </div>
   
   </div>`;
-price=parseFloat(price)+parseFloat(((price/100)*10).toFixed(2));
+  price=parseFloat(price)+parseFloat(((price/100)*10).toFixed(2));
 }
 function remover()
 {
