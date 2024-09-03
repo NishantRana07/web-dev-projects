@@ -5,23 +5,32 @@
       
       .navbar .ham {
         display: block;
-        margin-right:80px;
+        margin-right:30px;
         font-size: 1rem;
       }
       
       .navbar {
-        padding: 10px 30px;
+        padding: 10px 10px;
+        justify-content: space-between;
       }
+      
       
       .navbar .right.show {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 74px; 
+        width: fit-content;
+        top: 75px; 
         right: 0px; 
         padding: 10px;
         gap: 10px;
         align-items: end;
         background-color: #3333336f;
       }
+      .search div
+      {
+        display: flex;
+        flex-direction: column;
+      }
+
 }

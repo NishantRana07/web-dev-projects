@@ -16,7 +16,10 @@ body {
   height: 80px;
   color: white;
 }
-
+.navbar .ham
+{
+  display: none;
+}
 .left img {
   height: 100%;
   width: 100%; 
@@ -64,6 +67,7 @@ body {
   border: 1px solid #333;
   background-color: #333;
   color: white;
+  min-width:fit-content;
   width: calc(100% - 170px); /* Subtract label width and gap */
   box-sizing: border-box; /* Include padding in width */
 }
