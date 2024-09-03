@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Coders</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="left">
+            <a href="#">
+                <img src="images/Team_Elite.png" alt="Logo">
+            </a>
+        </div>
+    
+        <button class="ham"><i class="fa-solid fa-bars"></i></button>
+    
+        <div class="right">
+            <a href="index.html" class="home">Home</a>
+            <a href="#">Plan Your Trip</a>
+            <a href="#"  class="abt">About Us</a>
+            <a href="#" class="contactUs" onclick="console.log('contact-us clicked')">Contact Us</a>
+        </div>
+    </nav>
+    
 
+    <!-- 1st Page -->
+    <div class="search">
+        <div class="location">
+            <p>Start location</p>
+            <input type="text" id="startloc">
+        </div>
+
+        <div class="destination">
+            <p>destination location</p>
+            <input type="text" id="endloc">
+        </div>
+
+        <div class="Search-" id="searchButton">
+            
+        <button class="button" >
+        <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg>
+        Search
+        </button>
+
+        </div><!-- button -->
+    </div><!--Search-->
+
+
+    <!-- Display -->
+
+    <Center><div class="display">
+        <p> start destinantion : </p>
+        <p>end destinantion:</p>
+    </div></Center>
+
+    
+    
+    <script src="script.js" type="text/javascript"></script>
+
+</body>
+</html>

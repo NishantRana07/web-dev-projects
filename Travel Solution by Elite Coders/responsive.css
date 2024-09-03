@@ -1,0 +1,27 @@
+@media screen and (max-width: 768px) {
+    .navbar .right {
+        display: none;
+      }
+      
+      .navbar .ham {
+        display: block;
+        margin-right:80px;
+        font-size: 1rem;
+      }
+      
+      .navbar {
+        padding: 10px 30px;
+      }
+      
+      .navbar .right.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 74px; 
+        right: 0px; 
+        padding: 10px;
+        gap: 10px;
+        align-items: end;
+        background-color: #3333336f;
+      }
+}
