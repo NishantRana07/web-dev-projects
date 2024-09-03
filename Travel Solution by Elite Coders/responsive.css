@@ -21,8 +21,8 @@
         position: absolute;
         width: fit-content;
         top: 75px; 
-        right: 5px; 
-        padding: 10px;
+        right: 10px; 
+        padding: 5px;
         gap: 10px;
         align-items: end;
         background-color: #3333336f;

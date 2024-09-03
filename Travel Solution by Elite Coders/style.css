@@ -125,3 +125,10 @@ body {
   transition-duration: 1.5s;
 }
 
+/* Map */
+#map{
+  height: 400px;
+  width: 70%;
+  margin:20px auto;
+  border-radius: 5px;
+}
