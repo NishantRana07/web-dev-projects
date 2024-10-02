@@ -6,6 +6,15 @@
 .top
 {
     margin:10px;
+    display: flex;
+    .acc
+    {
+        display: flex;
+        gap:5px;
+        font-family:arial;
+        font-weight:600;
+        margin:auto 5px;
+    }
     .macbook-island {
         height:30px;
         width:100px;
@@ -25,7 +34,61 @@
         margin-left:5px;
         
     }
-}
+    .streak
+    {
+        display: flex;
+        font-family: sans-serif;
+        margin:auto 5px;
+        gap:5px;
+        i 
+        {
+            color:rgb(223, 116, 15);
+            font-size:20px;
+        }
+    }
+    .login
+    {
+      height:20px;
+      margin:-3px 25px;
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 5px;
+            gap: 5px;
+            background-color: #181717;
+            outline: 3px #181717 solid;
+            outline-offset: -3px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 400ms;
+        }
+        
+        .button .text {
+            color: white;
+            font-weight: 700;
+            font-size: 1em;
+            transition: 400ms;
+        }
+        
+        .button svg path {
+            transition: 400ms;
+        }
+        
+        .button:hover {
+            background-color: transparent;
+        }
+        
+        .button:hover .text {
+            color: #181717;
+        }
+        
+        .button:hover svg path {
+            fill: #181717;
+        } 
+            }
+        }
 .mid
 {
     
@@ -99,10 +162,26 @@
         background-color: rgb(161, 29, 29);
         height: 80%;
         width: 25%;
-        color: white;
+        color:white;
         border-radius: 10px;
         padding: 20px;
         text-align: center;
+        position: relative;
+        .time_set
+        {
+            position:absolute;
+            padding: 5px;
+            top:0;
+            left:0;
+            font-size:12px;
+            display: flex;
+            gap:5px;
+            button
+            {
+                height: 5px;
+            }
+        }
+        
     }
     
     .btns {
@@ -117,17 +196,7 @@
         cursor: pointer;
         position: relative; /* Necessary for position-based animations */
     }
-    #yesBtn:hover
-    {
-        
-        background-color: red;
-        margin-left:50px;
-    }
-    .default
-    {
-        margin-left:150px;
-        position:absolute
-    }
+    
    
     
     .p3
@@ -135,7 +204,7 @@
         margin-top:-35px;
         height:80%;
         width:35%;
-        
+        position: relative;
         border-radius:10px;
         color:rgb(0, 0, 0);
         font-family: 'Courier New', Courier, monospace;
@@ -143,19 +212,19 @@
         {
             margin-bottom:5px;
             width:100%;
-            background-color:rgb(199, 93, 93);
+            background-color:rgb(188, 103, 103);
             border-radius: 5px;
             padding:10px;
         }
         table tr th 
         {
             font-weight: 800;
-            color:rgba(30, 28, 28, 0.941);
+            color:white;
         }
         table tr td
         {
-            background-color: rgb(49, 48, 45);
-
+            background-color: rgb(94, 23, 2);
+            
             color:white;
             
             text-align: center;
