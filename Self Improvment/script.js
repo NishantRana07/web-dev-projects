@@ -237,3 +237,159 @@ loadGoalTime();
 
 // Call checkGoalTime every second
 setInterval(checkGoalTime, 1000);
+
+
+
+
+/* Task Manager */
+// DOM Elements
+const taskInput = document.getElementById('taskInput');
+const taskPriority = document.getElementById('taskPriority');
+const dueDateInput = document.getElementById('dueDateInput');
+const categoryInput = document.getElementById('categoryInput');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const taskList = document.getElementById('taskList');
+const clearCompletedBtn = document.getElementById('clearCompleted');
+const progressBar = document.getElementById('progressBar');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const darkModeToggle = document.getElementById('darkModeToggle');
+
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let filter = 'all'; // Default filter
+
+// Load tasks from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+  renderTasks();
+  updateProgressBar();
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+  }
+});
+
+// Add task event
+addTaskBtn.addEventListener('click', addTask);
+taskList.addEventListener('click', handleTaskActions);
+clearCompletedBtn.addEventListener('click', clearCompletedTasks);
+filterBtns.forEach(btn => btn.addEventListener('click', filterTasks));
+darkModeToggle.addEventListener('click', toggleDarkMode);
+
+// Add new task
+function addTask() {
+  const taskText = taskInput.value.trim();
+  const priority = taskPriority.value;
+  const dueDate = dueDateInput.value;
+  const category = categoryInput.value.trim();
+
+  if (taskText === '') return alert('Please enter a task');
+
+  const newTask = {
+    id: Date.now(),
+    text: taskText,
+    priority,
+    dueDate,
+    category,
+    completed: false
+  };
+
+  tasks.push(newTask);
+  saveToLocalStorage();
+  renderTasks();
+  updateProgressBar();
+  taskInput.value = '';
+  dueDateInput.value = '';
+  categoryInput.value = '';
+}
+
+// Handle task actions
+function handleTaskActions(e) {
+  const taskId = e.target.closest('tr').dataset.id;
+
+  if (e.target.tagName === 'INPUT') {
+    toggleTaskCompletion(taskId);
+  } else if (e.target.tagName === 'BUTTON') {
+    deleteTask(taskId);
+  }
+}
+
+// Toggle task completion
+function toggleTaskCompletion(id) {
+  tasks = tasks.map(task =>
+    task.id === parseInt(id) ? { ...task, completed: !task.completed } : task
+  );
+  saveToLocalStorage();
+  renderTasks();
+  updateProgressBar();
+}
+
+// Delete task
+function deleteTask(id) {
+  tasks = tasks.filter(task => task.id !== parseInt(id));
+  saveToLocalStorage();
+  renderTasks();
+  updateProgressBar();
+}
+
+// Render tasks
+function renderTasks() {
+  taskList.innerHTML = '';
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'all') return true;
+    if (filter === 'active') return !task.completed;
+    if (filter === 'completed') return task.completed;
+  });
+
+  filteredTasks.forEach(task => {
+    const taskRow = document.createElement('tr');
+    taskRow.className = task.completed ? 'completed-task' : '';
+    taskRow.dataset.id = task.id;
+
+    taskRow.innerHTML = `
+      <td>${task.text}</td>
+      <td>${task.priority}</td>
+      <td>${task.dueDate ? task.dueDate : 'No due date'}</td>
+      <td>${task.category ? task.category : 'No category'}</td>
+      <td><input type="checkbox" ${task.completed ? 'checked' : ''}></td>
+      <td><button>Delete</button></td>
+    `;
+    taskList.appendChild(taskRow);
+  });
+}
+
+// Clear completed tasks
+function clearCompletedTasks() {
+  tasks = tasks.filter(task => !task.completed);
+  saveToLocalStorage();
+  renderTasks();
+  updateProgressBar();
+}
+
+// Update progress bar
+function updateProgressBar() {
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter(task => task.completed).length;
+  const percentage = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+  progressBar.style.width = `${percentage}%`;
+}
+
+// Filter tasks
+function filterTasks(e) {
+  filterBtns.forEach(btn => btn.classList.remove('active'));
+  e.target.classList.add('active');
+  filter = e.target.dataset.filter;
+  renderTasks();
+}
+
+// Save to localStorage
+function saveToLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Dark mode toggle
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    localStorage.setItem('darkMode', 'disabled');
+  }
+}
