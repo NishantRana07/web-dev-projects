@@ -493,9 +493,12 @@
         .btn2 .twitter {
             margin-top: .25em;
             margin-left: .1em;
-            fill: #03A9F4;
+            fill: #2e30a1;
         }
-        
+        .btn2 .addcolor:hover
+        {
+            color:white;
+        }
         .btn2 .tooltiptext2 {
             visibility: hidden;
             width: 6em;
@@ -598,3 +601,11 @@
         }
     }
   }
+
+.fa-brands
+{
+    font-size:22px;color:rgb(59, 59, 184); 
+    fa-brands:hover
+    {color:white;
+    background-color: blue;}
+}
