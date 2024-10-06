@@ -6,4 +6,4 @@
 
 ## Add to cart - https://raw.githack.com/NishantRana07/web-dev-projects/a47975a36386efa9bab417e1003d7ca152c1fad5/add%20to%20cart/index.html
 
-## Self Improvement - https://cdn.githubraw.com/NishantRana07/web-dev-projects/5f3ee3cb7a6d4e0e5d4856e33f71bf9c27825510/Self%20Improvment/index.html
+## Self Improvement - https://web-dev-projects-rouge.vercel.app/
