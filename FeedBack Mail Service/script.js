@@ -10,7 +10,7 @@ const message = document.querySelector('#textarea'); // Correct ID reference for
 
 // Event listener for form submission
 document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent page refresh
+     // Prevent page refresh
 
     // Debug: Log values to console
     console.log(namex.value);
