@@ -7,10 +7,12 @@ emailjs.init({
 const namex = document.querySelector('#name');
 const emailInput = document.querySelector('#email'); // Avoid using 'email' as a variable name to prevent confusion
 const message = document.querySelector('#textarea'); // Correct ID reference for the textarea
+const submitButton = document.querySelector('#submit'); // Select the submit button
+const successMessage = document.getElementById('success-message'); // Select the success message element
 
 // Event listener for form submission
 document.querySelector('form').addEventListener('submit', function(event) {
-     // Prevent page refresh
+    event.preventDefault(); // Prevent page refresh
 
     // Debug: Log values to console
     console.log(namex.value);
@@ -31,6 +33,15 @@ function Send() {
     })
     .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
+
+        // Show success message and disable the submit button
+        successMessage.style.display = 'block';
+        submitButton.disabled = true; // Disable the button to prevent multiple submissions
+
+        // Reload the page after 3 seconds
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
     }, function(error) {
         console.log('FAILED...', error);
     });
