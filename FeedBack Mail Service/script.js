@@ -3,19 +3,30 @@ emailjs.init({
     publicKey: 'O_j6-YUJwi1qo4v70', // Your public API key
 });
 
-// Select form inputs
+// Select input elements
 const namex = document.querySelector('#name');
-const email = document.querySelector('#email');
-const message = document.querySelector('#textarea'); // Update the ID to match your HTML
+const emailInput = document.querySelector('#email'); // Avoid using 'email' as a variable name to prevent confusion
+const message = document.querySelector('#textarea'); // Correct ID reference for the textarea
 
-document.querySelector('#submit').addEventListener('click', Send);
+// Event listener for form submission
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent page refresh
+
+    // Debug: Log values to console
+    console.log(namex.value);
+    console.log(emailInput.value); // Use the emailInput variable
+    console.log(message.value);
+
+    // Call the Send function to send email
+    Send();
+});
 
 // Function to send email
 function Send() {
     // Send email using EmailJS
     emailjs.send('service_nptdu0c', 'template_h7nfc6f', {
-        from_name: `${email.value}`,   // The email address of the sender
-        to_name: `${namex.value}`,     // The recipient's name
+        from_name: `${namex.value}`,  // The name of the sender
+        from_email: `${emailInput.value}`, // The email address of the sender
         message: `${message.value}`,   // The message content
     })
     .then(function(response) {
