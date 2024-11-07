@@ -1,9 +1,11 @@
 # web-dev-projects
 
-## Amazon - https://rawcdn.githack.com/NishantRana07/web-dev-projects/abcf4d429cbde37b96e7eb4d09cddfd34490b89e/Amazon/index.html#top
+## [Amazon](https://rawcdn.githack.com/NishantRana07/web-dev-projects/abcf4d429cbde37b96e7eb4d09cddfd34490b89e/Amazon/index.html#top)
 
-## Pintrest - https://raw.githack.com/NishantRana07/web-dev-projects/1d26cd330f63e59d517efeb96b069a1ace871fce/Pintrest/index.html
+## [Pintrest](https://raw.githack.com/NishantRana07/web-dev-projects/1d26cd330f63e59d517efeb96b069a1ace871fce/Pintrest/index.html)
 
-## Add to cart - https://raw.githack.com/NishantRana07/web-dev-projects/a47975a36386efa9bab417e1003d7ca152c1fad5/add%20to%20cart/index.html
+## [Add to cart ](https://raw.githack.com/NishantRana07/web-dev-projects/a47975a36386efa9bab417e1003d7ca152c1fad5/add%20to%20cart/index.html)
 
-## Self Improvement - https://web-dev-projects-rouge.vercel.app/
+## [Self Improvement](https://web-dev-projects-rouge.vercel.app/)
+
+## [Courses HUB](https://rawcdn.githack.com/NishantRana07/web-dev-projects/ef04afdea12a4af0cff34a9708b0e0c0222f6aab/PaidIntern%20project/index.html)
