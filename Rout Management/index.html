@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Coders</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <!-- Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="left">
+            <a href="#">
+                <img src="images/Team_Elite.png" alt="Logo">
+            </a>
+        </div>
+    
+        <button class="ham"><i class="fa-solid fa-bars"></i></button>
+    
+        <div class="right">
+            <a href="index.html" class="home">Home</a>
+            <a href="#">Plan Your Trip</a>
+            <a href="#"  class="abt">About Us</a>
+            <a href="#" class="contactUs" onclick="console.log('contact-us clicked')">Contact Us</a>
+        </div>
+    </nav>
+    
+
+    <!-- 1st Page -->
+    <div class="search">
+        <div class="location">
+            <p>Start location</p>
+            <input type="text" id="startloc" placeholder="Enter starting location..." value="dehradun">
+        </div>
+
+        <div class="destination">
+            <p>Destination location</p>
+            <input type="text" id="endloc" placeholder="Enter destination..." value="yamunanagar">
+        </div>
+
+        <div class="Search-" id="searchButton">
+            
+        <button class="button" >
+        <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg>
+        Search
+        </button>
+
+        </div><!-- button -->
+    </div><!--Search-->
+    
+
+   
+    <Center><h3>Map - </h3></Center>
+    
+
+    
+
+    <!-- Buses -->
+    <div id="map" style="height: 700px;"></div>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    
+    <script>
+      // Initialize the map and center it on Dehradun
+      let map = L.map('map').setView([30.3165, 78.0322], 10); // Start from Dehradun
+    
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+    
+      // Custom icons for markers
+      const customIcons = {
+          start: L.icon({ iconUrl: 'images/pin.png', iconSize: [40, 40] }),
+          destination: L.icon({ iconUrl: 'images/destination.png', iconSize: [40, 40] }),
+          tourist: L.icon({ iconUrl: 'images/location-pin.png', iconSize: [40, 40] }),
+          hotel: L.icon({ iconUrl: 'images/hotel.png', iconSize: [40, 40] }),
+          bus_station: L.icon({ iconUrl: 'images/bus-stop.png', iconSize: [40, 40] }),
+          train_station: L.icon({ iconUrl: 'images/train.png', iconSize: [40, 40] }),
+          airport: L.icon({ iconUrl: 'images/airport.png', iconSize: [40, 40] }),
+          hospital: L.icon({ iconUrl: 'images/hospital.png', iconSize: [40, 40] })
+      };
+    
+      // Start, Midpoint (Paonta Sahib), and End Locations (Dehradun, Paonta Sahib, Yamunanagar)
+      const startLocation = { lat: 30.3165, lng: 78.0322, title: "Dehradun (Start)" };
+      const midLocation = { lat: 30.4396, lng: 77.6242, title: "Paonta Sahib" };  // Paonta Sahib
+      const endLocation = { lat: 30.1290, lng: 77.2674, title: "Yamunanagar (Destination)" };
+    
+      // Add Start, Midpoint, and End markers
+      L.marker([startLocation.lat, startLocation.lng], { icon: customIcons.start })
+          .bindPopup(`<strong>${startLocation.title}</strong>`)
+          .addTo(map);
+    
+      L.marker([midLocation.lat, midLocation.lng], { icon: customIcons.tourist })  // Tourist icon for Paonta Sahib
+          .bindPopup(`<strong>${midLocation.title}</strong>`)
+          .addTo(map);
+    
+      L.marker([endLocation.lat, endLocation.lng], { icon: customIcons.destination })
+          .bindPopup(`<strong>${endLocation.title}</strong>`)
+          .addTo(map);
+    
+      // Route line passing through Paonta Sahib
+      const routeCoords = [
+          [30.3165, 78.0322],  // Dehradun
+          [30.4, 77.9],        // Approximate route points
+          [30.4396, 77.6242],  // Paonta Sahib
+          [30.36, 77.5],       // Midpoint between Paonta Sahib and Yamunanagar
+          [30.1290, 77.2674]   // Yamunanagar
+      ];
+    
+      // Draw the route line and add it to the map
+      let routeLine = L.polyline(routeCoords, { color: 'blue', weight: 5 }).addTo(map);
+    
+      // Calculate and display the distance of the entire route
+      let distance = map.distance([startLocation.lat, startLocation.lng], [endLocation.lat, endLocation.lng]) / 1000;
+      routeLine.bindPopup(`<strong>Route Distance: ${distance.toFixed(2)} km</strong>`).openPopup();
+    
+      // Tourist spots distributed along the entire route
+      const touristPlaces = [
+          { lat: 30.346, lng: 77.9, title: "Tourist Spot A" },  // Near Dehradun
+          { lat: 30.45, lng: 77.7, title: "Tourist Spot B" },   // Near Paonta Sahib
+          { lat: 30.35, lng: 77.55, title: "Tourist Spot C" }   // Near Yamunanagar
+      ];
+    
+      // Add Tourist Place markers
+      touristPlaces.forEach(place => {
+          L.marker([place.lat, place.lng], { icon: customIcons.tourist })
+              .bindPopup(`<strong>${place.title}</strong>`)
+              .addTo(map);
+      });
+    
+      // Service markers distributed along the route (hotels, bus stations, etc.)
+      const markersData = {
+          hotels: [
+              { lat: 30.32, lng: 77.8, title: "Hotel A (Near Dehradun)" },   
+              { lat: 30.43, lng: 77.63, title: "Hotel B (Near Paonta Sahib)" },   
+              { lat: 30.34, lng: 77.51, title: "Hotel C (Near Yamunanagar)" }
+          ],
+          bus_stations: [
+              { lat: 30.31, lng: 77.92, title: "Bus Station A" },
+              { lat: 30.44, lng: 77.6, title: "Bus Station B" },
+              { lat: 30.36, lng: 77.47, title: "Bus Station C" }
+          ],
+          train_stations: [
+              { lat: 30.33, lng: 77.85, title: "Train Station A" },
+              { lat: 30.42, lng: 77.66, title: "Train Station B" },
+              { lat: 30.35, lng: 77.53, title: "Train Station C" }
+          ],
+          airports: [
+              { lat: 30.34, lng: 77.82, title: "Airport A (Near Dehradun)" },
+              { lat: 30.43, lng: 77.64, title: "Airport B (Near Paonta Sahib)" },
+              { lat: 30.33, lng: 77.5, title: "Airport C (Near Yamunanagar)" }
+          ],
+          hospitals: [
+              { lat: 30.32, lng: 77.88, title: "Hospital A (Near Dehradun)" },
+              { lat: 30.43, lng: 77.62, title: "Hospital B (Near Paonta Sahib)" },
+              { lat: 30.36, lng: 77.49, title: "Hospital C (Near Yamunanagar)" }
+          ]
+      };
+    
+      // Function to add service markers along the route
+      function addMarkers(markers, icon) {
+          markers.forEach(marker => {
+              L.marker([marker.lat, marker.lng], { icon: icon })
+                  .bindPopup(`<strong>${marker.title}</strong>`)
+                  .addTo(map);
+          });
+      }
+    
+      // Add service markers (hotels, bus stations, train stations, airports, hospitals)
+      addMarkers(markersData.hotels, customIcons.hotel);
+      addMarkers(markersData.bus_stations, customIcons.bus_station);
+      addMarkers(markersData.train_stations, customIcons.train_station);
+      addMarkers(markersData.airports, customIcons.airport);
+      addMarkers(markersData.hospitals, customIcons.hospital);
+    
+      // Adjust map view to show entire route and all markers
+      map.fitBounds(routeLine.getBounds());
+    
+    </script>
+    
+
+    <div class="tab-container">
+    <div class="tabs">
+        <button class="tab active" data-target="buses">Buses</button>
+        <button class="tab" data-target="trains">Trains</button>
+        <button class="tab" data-target="airways">Airways</button>
+    </div>
+    <div class="card-slider">
+        <div class="card-group buses active">
+            
+            
+            <div class="card">Bus 2</div>
+            <div class="card">Bus 3</div>
+            <div class="card">Bus 4</div>
+        </div>
+        <div class="card-group trains">
+            <div class="card">Train 1</div>
+            <div class="card">Train 2</div>
+            <div class="card">Train 3</div>
+            <div class="card">Train 4</div>
+        </div>
+        <div class="card-group airways">
+            <div class="card">Airway 1</div>
+            <div class="card">Airway 2</div>
+            <div class="card">Airway 3</div>
+            <div class="card">Airway 4</div>
+        </div>
+    </div>
+</div>
+
+     <script
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGstpAFM09Imt6Hkf18EDgjLDA6gjhWI8&libraries=places" defer>
+    </script>
+    <script src="script.js" type="text/javascript"></script>
+
+    <script src="https://kit.fontawesome.com/f794a9dced.js" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

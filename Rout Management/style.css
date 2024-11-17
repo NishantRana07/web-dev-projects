@@ -1,0 +1,334 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+body {
+  background: rgb(5,5,5);
+  background: linear-gradient(97deg, rgba(5,5,5,1) 0%, rgba(3,15,34,1) 35%, #051d41 100%);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  height: 80px;
+  color: white;
+}
+.navbar .ham
+{
+  display: none;
+}
+.left img {
+  height: 100%;
+  width: 100%; 
+  margin-left: 15%;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.search {
+  background-color: #1f1f1f; /* Darker background for better contrast */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  gap: 40px;
+  border-radius: 8px; /* Rounded corners for a modern look */
+  width: 60%; /* Adjust width for better alignment */
+  margin: 20px auto; /* Center the search section */
+  color: white;
+}
+
+.search div {
+  display: flex;
+  justify-content: space-between; /* Space between label and input */
+  align-items: center; /* Vertically align content */
+  width: 100%; /* Ensure full width for each row */
+}
+
+.search p {
+  font-size: 18px;
+  margin: 0;
+  width: 150px; /* Fixed width for labels */
+  text-align: center;
+}
+
+.search input[type="text"] {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #333;
+  color: white;
+  min-width:max-content;
+  min-width:max-content;
+  width: calc(100% - 170px); /* Subtract label width and gap */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.search input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+
+
+.button {
+  width: 110px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: rgb(161, 255, 20);
+  border-radius: 30px;
+  color: rgb(19, 19, 19);
+  font-weight: 600;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .2s;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+  padding-left: 8px;
+  transition-duration: .5s;
+
+  /* For centring */
+  margin:0px auto;
+}
+
+.svgIcon {
+  height: 25px;
+  transition-duration: 1.5s;
+}
+
+.bell path {
+  fill: rgb(19, 19, 19);
+}
+
+.button:hover {
+  background-color: rgb(192, 255, 20);
+  transition-duration: .5s;
+}
+
+.button:active {
+  transform: scale(0.97);
+  transition-duration: .2s;
+}
+
+.button:hover .svgIcon {
+  transform: rotate(250deg);
+  transition-duration: 1.5s;
+}
+
+/* Map */
+#map{
+  height: 400px;
+  width: 70%;
+  margin:20px auto;
+  border-radius: 5px;
+  color:black;
+}
+#distance
+{
+  color: white;
+}
+h3
+{
+  color: white;
+}
+
+
+
+/* Basic Structure */
+/* Container for tabs */
+.tab-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20 auto;
+  background-color: #e0f3ff;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* Tabs styling */
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.tab.active {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.tab:hover {
+  color: #0056b3;
+}
+
+/* Card Slider */
+.card-slider {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scroll */
+  display: flex;
+  scroll-behavior: smooth;
+}
+
+/* Card Group */
+.card-group {
+  display: none;
+  flex-shrink: 0;
+  flex-direction: row;
+  transition: transform 0.6s ease-in-out;
+  padding:10px 0px;
+}
+
+.card-group.active {
+  display: flex;
+  overflow-x: auto; /* Scroll horizontally */
+  gap: 10px; /* Space between cards */
+  width: 100%; /* Ensure full width for smooth scrolling */
+}
+.card-group::-webkit-scrollbar
+{
+  display: none;
+}
+/* Card styles */
+.card {
+  flex: 0 0 300px; /* Fixed width for cards */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+  min-height: 200px;
+}
+
+.card {
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 3px solid #007BFF;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #007BFF;
+  font-weight: 600;
+}
+
+.card-content .description {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;;
+}
+
+.info div {
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.info div i {
+  font-size: 28px;
+  color: #007BFF;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.info div:hover i {
+  color: #28a745;
+}
+
+.info div span {
+  display: block;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #495057;
+}
+.buses
+{
+  overflow:hidden;
+}
+
+.trains
+{
+  display: none;
+}
+.airways
+{
+  display: none;
+}
+/* Button Styles */
+.card-button {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.4s ease, box-shadow 0.3s ease;
+}
+
+.card-button:hover {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-button:active {
+  transform: scale(0.98);
+}
+.info .fas
+{
+  font-size:1rem;
+}
+.via i
+{
+  margin:10px 3px;
+}
