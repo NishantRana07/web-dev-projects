@@ -197,7 +197,7 @@
         const btn = document.querySelector('button');
         const container = document.querySelector('.chat-body');
         const loadingSpinner = document.querySelector('.loading-spinner');
-        const API_KEY = process.env.GEMINI_API_KEY; // Use environment variable for API key
+        const API_KEY = 'AIzaSyCtB0hwJhMse72qImqPo8Y6Wl9jVxJwZgw';
 
         async function generate(inp) {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
