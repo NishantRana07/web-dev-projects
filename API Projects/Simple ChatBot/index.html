@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }  
+  
+    .full
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100vw;
+        min-height: 100vh;
+        flex-direction: column;
+        flex-wrap:wrap;
+    }
+    h1
+    {
+        position:sticky;
+        top:0px;
+        width:100%;
+        text-align:center;
+        font-family: 'Bebas Neue';
+        background-color: #ffffff;
+        display: block;
+        font-size: 4rem;
+    }
+    
+
+    .sample
+    {
+        width:60vw;
+    }
+    .chat-card {
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .chat-header {
+        padding: 10px;
+        background-color: #f2f2f2;
+        display: flex;
+        align-items: center;
+    }
+
+    .chat-header .h2 {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .chat-body {
+        flex-grow: 1;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .message {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .incoming {
+        background-color: #e1e1e1;
+    }
+
+    .outgoing {
+        background-color: #f2f2f2;
+        text-align: right;
+    }
+
+    .message p {
+        font-size: 14px;
+        color: #333;
+        margin: 0;
+    }
+
+    .chat-footer {
+        padding: 10px;
+        background-color: #f2f2f2;
+        display: flex;
+        align-items: center;
+    }
+
+    .chat-footer input[type="text"] {
+        flex-grow: 1;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+    }
+
+    .chat-footer button {
+        padding: 5px 10px;
+        border: none;
+        background-color: #4285f4;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .chat-footer button:hover {
+        background-color: #0f9d58;
+    }
+
+    @keyframes chatAnimation {
+        0% {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .chat-card .message {
+        animation: chatAnimation 0.3s ease-in-out;
+        animation-fill-mode: both;
+        animation-delay: 0.1s;
+    }
+
+    .chat-card .message:nth-child(even) {
+        animation-delay: 0.2s;
+    }
+
+    .chat-card .message:nth-child(odd) {
+        animation-delay: 0.3s;
+    }
+
+    .loading-spinner {
+        display: none;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-left-color: #4285f4;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+    }
+</style>
+<body>
+
+    <div class="full">
+        <h1>Chat with me</h1>
+        <!-- <div class="form">
+            <form action="#">
+                <textarea rows="5" cols="29" placeholder="Write something here" ></textarea><br>
+                <button>Send</button>
+            </form>
+            <pre><p id="Result"></p></pre>
+        </div> -->
+
+        <div class="sample">
+            <div class="chat-card">
+                <div class="chat-header">
+                <div class="h2">Made By Nishant Rana</div>
+                </div>
+                <div class="chat-body">
+                <div class="message incoming">
+                    <p>Hello, how can I assist you today?</p>
+                </div>
+                <div class="message outgoing">
+                    <p>I have a question about your services.</p>
+                </div>
+                <div class="loading-spinner"></div>
+                </div>
+                <div class="chat-footer">
+                <input placeholder="Type your message" type="text">
+                <button>Send</button>
+                </div>
+            </div>
+  
+        </div>
+    </div>
+
+    <script>
+        const input = document.querySelector('input[type="text"]');
+        const btn = document.querySelector('button');
+        const container = document.querySelector('.chat-body');
+        const loadingSpinner = document.querySelector('.loading-spinner');
+        const API_KEY = process.env.GEMINI_API_KEY; // Use environment variable for API key
+
+        async function generate(inp) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+            const requestBody = {
+                "contents": [{
+                    "parts": [{"text": `${inp}`}]
+                }]
+            };
+
+            const tempMessage = document.createElement('div');
+            tempMessage.classList.add('message', 'incoming');
+            tempMessage.innerHTML = '<p>Loading...</p>';
+            container.appendChild(tempMessage);
+            container.scrollTop = container.scrollHeight;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                const data = await response.json();
+                let op = data['candidates'][0]['content']['parts'][0]['text'];
+                tempMessage.innerHTML = `<p>${op}</p>`;
+                container.scrollTop = container.scrollHeight;
+            } catch (error) {
+                console.error('Error:', error);
+                tempMessage.innerHTML = '<p>Error loading message</p>';
+            } finally {
+                loadingSpinner.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                const outgoingMessage = document.createElement('div');
+                outgoingMessage.classList.add('message', 'outgoing');
+                outgoingMessage.innerHTML = `<p>${input.value}</p>`;
+                container.appendChild(outgoingMessage);
+                container.scrollTop = container.scrollHeight;
+                generate(input.value);
+                input.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
