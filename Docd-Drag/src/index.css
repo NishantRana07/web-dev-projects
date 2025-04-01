@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+::selection{
+    color:rgba(199, 171, 27, 0.863)
+}
+
+*{
+    margin:0px;
+    padding:0px;
+    font-family:sans-serif;    
+}
+
