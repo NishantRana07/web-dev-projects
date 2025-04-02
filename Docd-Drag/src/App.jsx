@@ -1,14 +1,15 @@
-import Bg from './components/background'
-const App =() =>
-{
-  return(
+import Bg from './components/background';
+import Foreground from './components/foreground';
+
+const App = () => {
+  return (
     <>
-    <div className="relative h-scren w-full overflow-hidden">
-      <Bg/>
-      <div className="absolute h-screen w-full z-[2] top-0 bg-zinc-900/90"></div>
-    </div>
+      <div className="relative h-screen w-full">
+        <Bg />
+        <Foreground />
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default App;
